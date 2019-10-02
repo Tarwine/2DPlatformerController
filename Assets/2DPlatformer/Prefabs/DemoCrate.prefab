@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 212811306945918256}
   - component: {fileID: 61781244883272318}
   - component: {fileID: 50214110263617082}
-  - component: {fileID: 1793050983}
+  - component: {fileID: 6861369682920809871}
   m_Layer: 0
   m_Name: DemoCrate
   m_TagString: Untagged
@@ -130,7 +130,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1793050983
+--- !u!114 &6861369682920809871
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1222806087177142}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e15c208b3fd1c246a3c7e8d4fee1125, type: 3}
+  m_Script: {fileID: 11500000, guid: 9df95f9607241044cb224f9de722344f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gravityModifier: 1
