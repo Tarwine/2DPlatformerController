@@ -11783,6 +11783,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+    - target: {fileID: 212352764370017040, guid: cefdc9cb5c29254498f8928fb68d283c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: -2
+      objectReference: {fileID: 0}
     - target: {fileID: 212988347879301322, guid: cefdc9cb5c29254498f8928fb68d283c,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -13046,7 +13051,7 @@ PrefabInstance:
     - target: {fileID: 20134372339604138, guid: 0f387d2a5577afa47b4f87e4e846f091,
         type: 3}
       propertyPath: orthographic size
-      value: 4.1953125
+      value: 2.9453125
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f387d2a5577afa47b4f87e4e846f091, type: 3}
@@ -13301,6 +13306,16 @@ PrefabInstance:
     - target: {fileID: 4566797654940672, guid: e7fcecc826687024e9b52ec763b14088, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7961944826416158582, guid: e7fcecc826687024e9b52ec763b14088,
+        type: 3}
+      propertyPath: jumpTakeOffSpeed
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7961944826416158582, guid: e7fcecc826687024e9b52ec763b14088,
+        type: 3}
+      propertyPath: maxSpeed
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7fcecc826687024e9b52ec763b14088, type: 3}
