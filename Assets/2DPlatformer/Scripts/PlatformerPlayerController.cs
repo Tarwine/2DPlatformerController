@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class PlatformerPlayerController : PhysicsObject
 {
-    public float maxSpeed = 7;
-    public float jumpTakeOffSpeed = 7;
-    public float jumpSpeed = 2;
-    public float jumpTime = 0.4f;
-    public int numJumps = 1;
-
+    // Horizontal speed
+    public float maxSpeed = 5;
+    
+    // Jump variables
+    public float jumpTakeOffSpeed = 6;
+    public float jumpSpeed = 0.45f;
+    public float jumpTime = 0.13f;
+    public float jumpFallTolerance = 0.1f;
+    public int numJumps = 2;
     private float curJumpTime;
     private bool lastJumped;
-    public int curNumJumps;
+    private int curNumJumps;
 
     private SpriteRenderer spriteRenderer;
     private Animator animator;
@@ -29,29 +32,26 @@ public class PlatformerPlayerController : PhysicsObject
         
         move.x = Input.GetAxis("Horizontal");
 
-        if(Input.GetButton("Jump"))
-        {
+        if (Input.GetButtonDown("Jump")) {
+            lastJumped = false;
+            
+        } else if(Input.GetButton("Jump")) {
             curJumpTime += Time.deltaTime;
             if ((lastJumped && curJumpTime < jumpTime) || (curNumJumps < numJumps && !lastJumped)) {
                 if(!lastJumped) {
                     lastJumped = true;
                     curJumpTime = 0; 
                     curNumJumps++;
-                    if(curNumJumps >= numJumps) lastJumped = true;
                     velocity.y = jumpTakeOffSpeed;
                 }
                 velocity.y += jumpSpeed;
             }
             
-        } else if (Input.GetButtonUp("Jump")) {
+        } else if (grounded && curNumJumps > 0){
+            curNumJumps = 0;
             lastJumped = false;
-            if(velocity.y > 0)
-            {
-                velocity.y *= 0.5f;
-            }
-        } else {
-            if (grounded) curNumJumps = 0;
-        }
+        } 
+        
         bool flipSprite = (spriteRenderer.flipX ? (move.x > 0.01f) : (move.x < -0.01f));
 
         if (flipSprite)
@@ -63,5 +63,18 @@ public class PlatformerPlayerController : PhysicsObject
         animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
 
         targetVelocity = move * maxSpeed;
+    }
+
+    protected override void OnLeftGround() {
+        StartCoroutine(disableJump());
+    }
+
+    IEnumerator disableJump()
+    {
+        yield return new WaitForSeconds(jumpFallTolerance);
+        if(!lastJumped && !grounded) 
+        {
+            curNumJumps = 1;
+        }
     }
 }
